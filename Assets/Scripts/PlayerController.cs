@@ -50,18 +50,16 @@ public class PlayerController : MonoBehaviour
 
     private void Fire()
     {
+        var bl = bulletsLeft.GetComponent<ParticleSystem>().emission;
+        var br = bulletsRight.GetComponent<ParticleSystem>().emission;
         if (CrossPlatformInputManager.GetButton("Jump"))
         {
-            var bl = bulletsLeft.GetComponent<ParticleSystem>().emission;
             bl.enabled = true;
-            var br = bulletsRight.GetComponent<ParticleSystem>().emission;
             br.enabled = true;
         }
         else
         {
-            var bl = bulletsLeft.GetComponent<ParticleSystem>().emission;
             bl.enabled = false;
-            var br = bulletsRight.GetComponent<ParticleSystem>().emission;
             br.enabled = false;
         }
     }
