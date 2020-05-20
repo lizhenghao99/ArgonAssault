@@ -8,7 +8,7 @@ public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float LoadSceneDelay = 2f;
 
-    [SerializeField] GameObject deathFX;
+    [SerializeField] GameObject deathFX = null;
 
     // Start is called before the first frame update
     void Start()

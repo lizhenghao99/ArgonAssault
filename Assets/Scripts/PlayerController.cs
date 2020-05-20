@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.Effects;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class PlayerController : MonoBehaviour
     [Header("Player control based")]
     [SerializeField] float controlPitchFactor = -15f;
     [SerializeField] float controlRowFactor = -15f;
+
+    [Header("Player attack")]
+    [SerializeField] GameObject bulletsLeft = null;
+    [SerializeField] GameObject bulletsRight = null;
 
     float xThrow = 0f;
     float yThrow = 0f;
@@ -39,6 +44,25 @@ public class PlayerController : MonoBehaviour
         {
             Translate();
             Rotate();
+            Fire();
+        }
+    }
+
+    private void Fire()
+    {
+        if (CrossPlatformInputManager.GetButton("Jump"))
+        {
+            var bl = bulletsLeft.GetComponent<ParticleSystem>().emission;
+            bl.enabled = true;
+            var br = bulletsRight.GetComponent<ParticleSystem>().emission;
+            br.enabled = true;
+        }
+        else
+        {
+            var bl = bulletsLeft.GetComponent<ParticleSystem>().emission;
+            bl.enabled = false;
+            var br = bulletsRight.GetComponent<ParticleSystem>().emission;
+            br.enabled = false;
         }
     }
 
